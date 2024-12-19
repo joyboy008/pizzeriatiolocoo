@@ -26,7 +26,7 @@ function FormularioProduct({
                         name="name"
                         value={data.name}
                         autoComplete="none"
-                        pattern="^[A-Za-zÁÉÍÓÚÑáéíóúñ]+( [A-Za-zÁÉÍÓÚÑáéíóúñ]+)+$"
+                        // pattern=""
                         title="Ej. Pizza Mediana"
                         onChange={onChange}
                         placeholder="Nombre del producto"
