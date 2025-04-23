@@ -1,50 +1,61 @@
-import { Component } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DefaultLayout from "../../components/DefaultLayout";
 import FormularioClient from "../../components/FormularioClient";
 import api from "../../utils/api";
 import Swal from "sweetalert2";
 
-class CrearClient extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      nit: "",
-      phone: "",
-      address: "",
-      email: "",
-    };
-  }
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+const CrearClient = () => {
+  const navigate = useNavigate();
+
+  const [cliente, setCliente] = useState({
+    name: "",
+    nit: "",
+    phone: "",
+    address: "",
+    email: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setCliente((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
-  handleSubmit = (event) => {
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    this.state.email = "ejemplo@tiolocoo.com";
-    api
-      .crearData("clientes", this.state)
-      .then((response) => {
-        Swal.fire({
-          title: "Cliente creado con exito!",
+
+    const clienteConEmail = {
+      ...cliente,
+      email: "ejemplo@tiolocoo.com", // Email fijo
+    };
+
+    try {
+      api.crearData("clientes", clienteConEmail).then(() => {
+        return Swal.fire({
+          title: "Cliente creado con éxito!",
           icon: "success",
           confirmButtonText: "Ok",
         });
-      })
-      .catch((err) => console.log(err));
+      });
+      navigate("/checkout");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  render() {
-    return (
-      <DefaultLayout title="Clientes">
-        <FormularioClient
-          data={this.state}
-          title="Registrar nuevo cliente"
-          onSubmit={this.handleSubmit}
-          onChange={this.handleChange}
-        ></FormularioClient>
-      </DefaultLayout>
-    );
-  }
-}
+  return (
+    <DefaultLayout title="Clientes de Tio Locoo">
+      <FormularioClient
+        data={cliente}
+        title="Registrar nuevo cliente"
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+      />
+    </DefaultLayout>
+  );
+};
 
 export default CrearClient;

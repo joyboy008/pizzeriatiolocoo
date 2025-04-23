@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import DefaultLayout from "../../components/DefaultLayout";
 import Swal from "sweetalert2";
 import Checkout from "../../components/checkout/Checkout";
-import Slider from "../../components/Slider";
 
 function CrearVenta() {
   const navigate = useNavigate();
@@ -137,7 +136,7 @@ function CrearVenta() {
   }, []);
   return (
     <>
-      <DefaultLayout title="Tio Loco!!">
+      <DefaultLayout title="Tio Locoo!!">
         <div>
           <Checkout
             selectedClient={selectedClient}
@@ -146,20 +145,20 @@ function CrearVenta() {
             sendDetailsToCreateSale={handleDetailsSaleChange}
           />
           <ListarData
-            title="Productos"
-            fetchFunction={fetchProductos}
-            columns={columnsProductos}
-            searchFields={["name", "price", "description", "category"]}
-            onAddProduct={handleAddProduct}
-            whatIs={"nuevoProducto"}
-          />
-          <ListarData
             title="Clientes"
             fetchFunction={fetchClientes}
             columns={columnsClientes}
             searchFields={["name", "phone", "address", "nit"]}
             onAddClient={handleAddClient}
             whatIs={"nuevoCliente"}
+          />
+          <ListarData
+            title="Productos"
+            fetchFunction={fetchProductos}
+            columns={columnsProductos}
+            searchFields={["name", "price", "description", "category"]}
+            onAddProduct={handleAddProduct}
+            whatIs={"nuevoProducto"}
           />
           <Checkout
             selectedClient={selectedClient}

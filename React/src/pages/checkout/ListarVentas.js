@@ -23,7 +23,7 @@ function ListarVentas() {
   }, []);
 
   return (
-    <DefaultLayout title="Ventas">
+    <DefaultLayout title="Ventas de Tio Locoo">
       <ListarData
         title="Ventas"
         fetchFunction={fetchSales}

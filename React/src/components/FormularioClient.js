@@ -43,7 +43,7 @@ function FormularioClient({
                         pattern="^\d+$|^cf$|^CF$"
                         title="Nit o cf"
                         onChange={onChange}
-                        placeholder="nit del cliente"
+                        placeholder="Nit del cliente"
                         required
                       />
                     </div>
@@ -57,7 +57,7 @@ function FormularioClient({
                         value={data.phone}
                         autoComplete="none"
                         onChange={onChange}
-                        placeholder="Categoria del producto"
+                        placeholder="Teléfono del cliente"
                         required
                       />
                     </div>
@@ -67,7 +67,7 @@ function FormularioClient({
                         type="text"
                         name="address"
                         title="Ej. 100"
-                        pattern="^[A-Za-z0-9\s,.-]+$"
+                        pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9 ,.#°-]+$"
                         value={data.address}
                         autoComplete="none"
                         onChange={onChange}

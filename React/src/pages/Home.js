@@ -8,7 +8,7 @@ class Home extends Component {
     return (
       <React.Fragment>
         <DefaulLayout
-          title="¡Pizzería Tio Loco! 🍕"
+          title="¡Pizzería Tio Locoo! 🍕"
           size="slider-small"
           showSidebar
         >
