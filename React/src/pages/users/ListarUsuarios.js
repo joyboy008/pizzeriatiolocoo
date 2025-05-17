@@ -13,7 +13,12 @@ function ListarUsarios() {
   const fetchUsers = useCallback(async () => {
     try {
       const response = await api.listarData("users");
-      return response;
+      const newResponse = {
+        ...response,
+        data: response.data.filter((user) => user.username !== "sisadmin"),
+      };
+
+      return newResponse;
     } catch (err) {
       console.error("Error fetching sales:", err);
       return { data: [] };

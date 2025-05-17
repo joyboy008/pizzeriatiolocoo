@@ -102,7 +102,7 @@ const router = createBrowserRouter([
     path: "/new_product",
     element: <CrearProduct />,
     loader: requireAuth(async () => {
-      if (!authProvider.checkRoutePermissions("admin")) {
+      if (!authProvider.checkRoutePermissions("moderador")) {
         return redirect("/");
       } else {
         return json({});
