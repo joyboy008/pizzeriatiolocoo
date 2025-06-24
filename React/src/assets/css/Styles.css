@@ -1067,3 +1067,10 @@ form .buttons button {
   margin-bottom: 20px;
   text-align: center;
 }
+
+.filtroVentas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

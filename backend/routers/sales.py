@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from db.database import get_db
 from db.crud import get_sale_details, get_sale
@@ -9,16 +9,55 @@ from utils.auth import JWTValidator
 from datetime import datetime
 from utils.sales import get_sale_display_date
 from db import crud
+from typing import Optional
 
 router = APIRouter(
     prefix="/sales", tags=["Ventas"], responses={404: {"Message": "No Encontrado"}}
 )
 
+# @router.get("/",
+#             dependencies={Depends(JWTValidator())},
+#             response_model=list[SaleDetailResponse])
+# def list_sales(db: Session = Depends(get_db)):
+#     sales = db.query(Sale).all()
+#     sales_details = []
+
+#     for sale in sales:
+#         sale.date = get_sale_display_date(sale)
+#         client = crud.get_client(db=db, client_id=sale.client_id)
+#         user = crud.get_user(db=db, user_id=sale.user_id)
+#         sale_detail = {
+#             "id": sale.id,
+#             "client_id": client.id,
+#             "client_name": client.name,
+#             "user_id": user.id,
+#             "user_username": user.username,
+#             "client_address": client.address,
+#             "total": sale.total,
+#             "date": sale.date,
+#             "sale_details": sale.sale_details,
+#         }
+
+#         sales_details.append(sale_detail)
+#     return sales_details
+
 @router.get("/",
             dependencies={Depends(JWTValidator())},
             response_model=list[SaleDetailResponse])
-def list_sales(db: Session = Depends(get_db)):
-    sales = db.query(Sale).all()
+def list_sales(
+    db: Session = Depends(get_db),
+    startDate: Optional[datetime] = Query(None),
+    endDate: Optional[datetime] = Query(None)
+):
+    query = db.query(Sale)
+
+    # Filtrar por fechas si se proporcionan
+    if startDate:
+        query = query.filter(Sale.date >= startDate)
+    if endDate:
+        query = query.filter(Sale.date <= endDate)
+
+    sales = query.all()
     sales_details = []
 
     for sale in sales:
@@ -39,6 +78,9 @@ def list_sales(db: Session = Depends(get_db)):
 
         sales_details.append(sale_detail)
     return sales_details
+
+
+
 
 @router.post("/", response_model=SaleCreate, 
              dependencies={Depends(JWTValidator())}

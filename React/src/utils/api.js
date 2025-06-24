@@ -40,13 +40,14 @@ const api = {
     };
     return axiosInstance.get(`${BASE_URL}/${endpoint}/${id}`, { headers });
   },
-  listarData: (endpoint) => {
+  listarData: (endpoint, params) => {
     const authHeaders = authProvider.getAuthHeaders();
     const headers = {
       ...authHeaders,
       "Content-Type": "application/json",
     };
     return axiosInstance.get(`${BASE_URL}/${endpoint}/`, {
+      params,
       headers,
     });
   },
