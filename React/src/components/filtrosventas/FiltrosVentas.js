@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../filtrosventas/FiltrosVentas.css"; // Aquí puedes poner tus estilos personalizados
+import "../filtrosventas/FiltrosVentas.css";
 
 function FiltrosVentas({ setFilter }) {
   const [selected, setSelected] = useState("today");
