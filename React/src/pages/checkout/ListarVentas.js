@@ -13,11 +13,12 @@ function ListarVentas() {
   const [sales, setSales] = useState([]);
 
   const columns = [
-    { label: "Vendedor", field: "user_username" },
-    { label: "Cliente", field: "client_name" },
+    { label: "CLIENTE: ", field: "client_name" },
+    { label: "📍", field: "client_address" },
+    { label: "📞", field: "client_phone" },
     { label: "Total", field: "total" },
-    { label: "Entrega", field: "client_address" },
-    { label: "Fecha", field: "date" },
+    { label: "📅", field: "date" },
+    { label: "🧑‍💼", field: "user_username" },
   ];
 
   const fetchSales = useCallback(async () => {
@@ -61,11 +62,11 @@ function ListarVentas() {
 
     const tableColumn = columns.map((col) => col.label);
     const tableRows = sales.map((sale) => [
-      sale.user_username,
       sale.client_name,
-      sale.total,
       sale.client_address,
+      sale.total,
       sale.date,
+      sale.user_username,
     ]);
 
     autoTable(doc, {
@@ -116,6 +117,7 @@ function ListarVentas() {
           searchFields={[
             "client_name",
             "user_username",
+            "client_phone",
             "address",
             "total",
             "date",

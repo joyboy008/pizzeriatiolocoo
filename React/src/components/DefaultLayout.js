@@ -30,8 +30,16 @@ function DefaultLayout({
       <Header />
       <Slider title={title} size={size} />
       <div className="center" id="center">
-        {children}
-        {showSidebar ? <Sidebar blog="true" /> : null}
+        {showSidebar ? (
+          <div className="contenidoHome">
+            <div className="home">{children}</div>
+            <div className="sidebar">
+              <Sidebar blog="true" />{" "}
+            </div>
+          </div>
+        ) : (
+          children
+        )}
       </div>
     </>
   );

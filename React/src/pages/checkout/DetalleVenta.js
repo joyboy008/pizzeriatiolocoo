@@ -19,10 +19,7 @@ function DetalleVenta() {
   return (
     <DefaulLayout title="Ventas" size="slider-small">
       {loading ? (
-        <div>
-          <Spinner animation="grow" variant="info" />
-          <h1>cargando...</h1>
-        </div>
+        <Spinner animation="grow" variant="info" />
       ) : (
         <FormularioVenta title={"Detalle de Venta"} data={ventaData} />
       )}

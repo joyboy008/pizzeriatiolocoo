@@ -10,7 +10,7 @@ const CrearClient = () => {
 
   const [cliente, setCliente] = useState({
     name: "",
-    nit: "",
+    nit: "cf",
     phone: "",
     address: "",
     email: "",
@@ -24,22 +24,26 @@ const CrearClient = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const nitFinal = cliente.nit.trim() === "" ? "cf" : cliente.nit;
 
     const clienteConEmail = {
       ...cliente,
-      email: "ejemplo@tiolocoo.com", // Email fijo
+      nit: nitFinal.toLowerCase(),
+      email: "ejemplo@tiolocoo.com",
     };
 
     try {
-      api.crearData("clientes", clienteConEmail).then(() => {
-        return Swal.fire({
-          title: "Cliente creado con éxito!",
-          icon: "success",
-          confirmButtonText: "Ok",
-        });
+      await api.crearData("clientes", clienteConEmail);
+
+      await Swal.fire({
+        title: "Cliente creado con éxito!",
+        icon: "success",
+        confirmButtonText: "Ok",
       });
+
       navigate("/checkout");
     } catch (error) {
       console.error(error);

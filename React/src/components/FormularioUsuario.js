@@ -117,7 +117,7 @@ function Formulario({ esActualizacion, title, data, onChange, onSubmit }) {
                     </div>
                   </div>
                   <div className="buttons">
-                    <button type="submit" className="saveBtn">
+                    <button type="submit" className="dropbtn succes">
                       <span className="btnText">Guardar</span>
                     </button>
                   </div>

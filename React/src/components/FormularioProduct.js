@@ -121,7 +121,7 @@ function FormularioProduct({
                   </div>
                 </div>
                 <div className="buttons">
-                  <button type="submit" className="saveBtn">
+                  <button type="submit" className="dropbtn succes">
                     <span className="btnText">Guardar</span>
                   </button>
                 </div>

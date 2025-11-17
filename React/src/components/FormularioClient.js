@@ -26,7 +26,7 @@ function FormularioClient({
                         name="name"
                         value={data.name}
                         autoComplete="none"
-                        pattern="^[A-Za-zÁÉÍÓÚÑáéíóúñ]+( [A-Za-zÁÉÍÓÚÑáéíóúñ]+)+$"
+                        pattern="^[A-Za-zÁÉÍÓÚÑáéíóúñ]+(?: [A-Za-zÁÉÍÓÚÑáéíóúñ]+)*$"
                         title="Ej. Braulio Juarez"
                         onChange={onChange}
                         placeholder="Nombre del Cliente"
@@ -38,13 +38,13 @@ function FormularioClient({
                       <input
                         type="text"
                         name="nit"
-                        value={data.nit}
+                        value={data.nit ?? "cf"}
                         autoComplete="none"
                         pattern="^\d+$|^cf$|^CF$"
                         title="Nit o cf"
                         onChange={onChange}
                         placeholder="Nit del cliente"
-                        required
+                        // required
                       />
                     </div>
                     <div className="input-field">
@@ -92,7 +92,7 @@ function FormularioClient({
                   </div>
                 </div>
                 <div className="buttons">
-                  <button type="submit" className="saveBtn">
+                  <button type="submit" className="dropbtn succes">
                     <span className="btnText">Guardar</span>
                   </button>
                 </div>

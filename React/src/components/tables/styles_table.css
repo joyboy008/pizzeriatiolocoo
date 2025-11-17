@@ -9,13 +9,15 @@
     }
 }
 
-td {
-    min-width: 175px;
+
+.td_products,
+.th_products {
+    width: 100px !important;
 }
 
 /* Estilo principal para la tabla */
 main.table {
-    width: 82vw;
+    width: 50vw;
     min-height: 700px;
     background: rgb(255, 111, 60);
     background: linear-gradient(180deg, rgba(255, 111, 60, 1) 0%, rgba(255, 176, 112, 1) 40%, rgb(255, 173, 119) 100%, rgba(235, 149, 92, 1) 100%, rgba(48, 35, 5, 1) 100%, rgba(17, 33, 77, 1) 100%, rgba(8, 131, 175, 1) 100%);
@@ -83,7 +85,7 @@ th,
 td {
     padding: 1rem;
     text-align: left;
-    height: 80px;
+    /* height: 80px; */
 }
 
 td img {
@@ -150,18 +152,112 @@ thead th:hover {
 }
 
 /* Adaptaciones para pantallas pequeñas */
-@media (max-width: 1000px) {
+@media (max-width: 1050px) {
     td:not(:first-of-type) {
         min-width: 12.1rem;
     }
+
+    main.table {
+        width: 95vw;
+    }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 525px) {
     main.table__sale_details {
-        width: 350px;
+        width: 300px;
     }
 
     main {
         font-size: 0.8em;
     }
+}
+
+.background-buttons {
+    background-color: transparent !important;
+}
+
+.cards__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    padding: 10px;
+}
+
+/* Card general */
+.sale-card {
+    background: rgb(255, 111, 60);
+    background: linear-gradient(180deg, rgba(255, 111, 60, 1) 0%, rgba(255, 176, 112, 1) 40%, rgb(255, 173, 119) 100%, rgba(235, 149, 92, 1) 100%, rgba(48, 35, 5, 1));
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    /* gap: 10px; */
+    transition: transform 0.1s ease;
+}
+
+/* Efecto al tocar */
+.sale-card:active {
+    transform: scale(0.98);
+}
+
+/* Cliente */
+.sale-title {
+    font-size: 20px;
+    background-color: transparent !important;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Iconos + texto */
+.sale-row {
+    display: flex;
+    height: 45px;
+    align-items: center;
+    font-size: 16px;
+    color: #444;
+    gap: 6px;
+    background-color: transparent !important;
+    border-bottom: 1px dashed rgb(55, 18, 0);
+}
+
+.sale-row:last-child {
+    border-bottom: unset;
+}
+
+/* Total */
+.sale-total {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    background-color: transparent !important;
+}
+
+/* Campos adicionales (menos importantes) */
+.extra-fields {
+    margin-top: 4px;
+    opacity: 0.7;
+    font-size: 14px;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+/* Contenedor del botón */
+.sale-actions {
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo opcional para meterte a tus botones ya existentes */
+.sale-actions button,
+.sale-actions .btn {
+    border-radius: 10px !important;
+    background: transparent;
+}
+
+.background-buttons {
+    margin-bottom: 10px;
 }

@@ -42,6 +42,7 @@ def list_sales(
         sale_detail = {
             "id": sale.id,
             "client_id": client.id,
+            "client_phone": client.phone,
             "client_name": client.name,
             "user_id": user.id,
             "user_username": user.username,
@@ -65,6 +66,7 @@ def create_sale(sale: SaleCreate, db: Session = Depends(get_db)):
     db.add(db_sale)
     db.commit()
     db.refresh(db_sale)
+    
 
     total_price = 0
     products_in_sale = []

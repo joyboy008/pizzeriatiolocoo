@@ -14,17 +14,16 @@ function CrearVenta() {
   const [detailsSale, setDetailsSale] = useState("");
 
   const columnsClientes = [
-    { label: "Nombre", field: "name" },
-    { label: "Teléfono", field: "phone" },
-    { label: "Entrega", field: "address" },
-    { label: "NIT", field: "nit" },
+    { label: "Cliente:", field: "name" },
+    { label: "📞", field: "phone" },
+    { label: "📍", field: "address" },
   ];
 
   const columnsProductos = [
-    { label: "Nombre", field: "name" },
-    { label: "Precio", field: "price" },
-    { label: "Descripcion", field: "description" },
-    { label: "Categoria", field: "category" },
+    { label: "Nombre:", field: "name" },
+    { label: "Precio:", field: "price" },
+    { label: "Descripcion:", field: "description" },
+    { label: "Categoria:", field: "category" },
   ];
 
   const handleAddClient = useCallback(async (clientId) => {
@@ -137,7 +136,7 @@ function CrearVenta() {
   return (
     <>
       <DefaultLayout title="Tio Locoo!!">
-        <div>
+        <div className="filtroVentas">
           <Checkout
             selectedClient={selectedClient}
             selectedProducts={selectedProducts}
@@ -148,7 +147,7 @@ function CrearVenta() {
             title="Clientes"
             fetchFunction={fetchClientes}
             columns={columnsClientes}
-            searchFields={["name", "phone", "address", "nit"]}
+            searchFields={["name", "phone", "address"]}
             onAddClient={handleAddClient}
             whatIs={"nuevoCliente"}
           />

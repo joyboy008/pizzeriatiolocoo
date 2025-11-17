@@ -6,14 +6,20 @@ function Buttons({ endpoint, data, whatIs, onAddProduct, onAddClient }) {
     if (whatIs === "nuevoProducto") {
       return (
         <>
-          <a className="dropbtn succes" onClick={() => onAddProduct(data, 1)}>
+          <button
+            className="dropbtn succes"
+            onClick={() => onAddProduct(data, 1)}
+          >
             Agregar
-          </a>
+          </button>
           {authProvider.checkRoutePermissions("admin") ? (
             <>
               <NavLink className="dropbtn succes" to={`/${endpoint}/${data}`}>
                 Actualizar
               </NavLink>
+              <br></br>
+              <br></br>
+              <br></br>
               <NavLink
                 className="dropbtn danger"
                 to={`/${endpoint}/delete/${data}`}
@@ -27,14 +33,17 @@ function Buttons({ endpoint, data, whatIs, onAddProduct, onAddClient }) {
     } else if (whatIs === "nuevoCliente") {
       return (
         <>
-          <a className="dropbtn succes" onClick={() => onAddClient(data)}>
+          <button className="dropbtn succes" onClick={() => onAddClient(data)}>
             Seleccionar
-          </a>
+          </button>
           <NavLink className="dropbtn succes" to={`/${endpoint}/${data}`}>
             Actualizar
           </NavLink>
           {authProvider.checkRoutePermissions("admin") ? (
             <>
+              <br></br>
+              <br></br>
+              <br></br>
               <NavLink
                 className="dropbtn danger"
                 to={`/${endpoint}/delete/${data}`}
@@ -51,6 +60,11 @@ function Buttons({ endpoint, data, whatIs, onAddProduct, onAddClient }) {
           <NavLink className="dropbtn succes" to={`/sales/${data}`}>
             Detalles
           </NavLink>
+          {authProvider.checkRoutePermissions("admin") ? (
+            <NavLink className="dropbtn danger" to={`/sales/delete/${data}`}>
+              Eliminar
+            </NavLink>
+          ) : null}
         </>
       );
     } else if (
@@ -93,13 +107,10 @@ function Buttons({ endpoint, data, whatIs, onAddProduct, onAddClient }) {
     ) {
       return (
         <>
-          <NavLink className="dropbtn succes" to={`/${endpoint}/${data}`}>
+          <NavLink className="dropbtn succes" to={`/${"users"}/${data}`}>
             Actualizar
           </NavLink>
-          <NavLink
-            className="dropbtn danger"
-            to={`/${endpoint}/delete/${data}`}
-          >
+          <NavLink className="dropbtn danger" to={`/${"users"}/delete/${data}`}>
             Eliminar
           </NavLink>
         </>

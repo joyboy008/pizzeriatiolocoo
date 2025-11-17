@@ -5,10 +5,10 @@ import api from "../../utils/api";
 
 function ListarUsarios() {
   const columnsUsers = [
-    { label: "Nombre", field: "name" },
-    { label: "Username", field: "username" },
-    { label: "Caja", field: "cash_register" },
-    { label: "Rol", field: "role" },
+    { label: "Nombre:", field: "name" },
+    { label: "Username:", field: "username" },
+    { label: "Caja:", field: "cash_register" },
+    { label: "Rol:", field: "role" },
   ];
   const fetchUsers = useCallback(async () => {
     try {
@@ -29,7 +29,7 @@ function ListarUsarios() {
     <DefaulLayout title="Usuarios">
       <div>
         <ListarData
-          title="Users"
+          title="Usuarios"
           fetchFunction={fetchUsers}
           columns={columnsUsers}
           searchFields={["username", "name", "role"]}

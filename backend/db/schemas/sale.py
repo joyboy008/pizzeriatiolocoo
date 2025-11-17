@@ -35,6 +35,7 @@ class SaleDetailResponse(BaseModel):
     client_id: int
     client_name: str
     client_address: str
+    client_phone: str
     user_id: int
     user_username: str
     total: float
