@@ -52,10 +52,22 @@ function ListarVentas() {
     }
   }, [filter]);
 
+  function corregirNombreFiltro(filter) {
+    if (filter === "today") {
+      return "Hoy";
+    } else if (filter === "week") {
+      return "Semana";
+    } else if (filter === "month") {
+      return "Mes";
+    } else {
+      return "Todas";
+    }
+  }
+
   const exportToPDF = () => {
     const doc = new jsPDF();
     doc.text(
-      `Reporte de Ventas Tio Locoo- Filtro: ${filter.toUpperCase()}`,
+      `Reporte de Ventas Tio Locoo- Filtro: ${corregirNombreFiltro(filter)}`,
       14,
       16
     );
