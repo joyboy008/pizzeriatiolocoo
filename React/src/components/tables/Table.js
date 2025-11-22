@@ -5,7 +5,13 @@ import "./styles_table.css";
 function Table({ title, onAddProduct, onAddClient, columns, data, whatIs }) {
   return (
     <main className="table" id="customers_table">
-      <section className="table__header">
+      <section
+        className={
+          title.toLowerCase() === "clientes"
+            ? "table__header clientes"
+            : "table__header productos"
+        }
+      >
         <h3>Listado de {title}</h3>
       </section>
       {/* <section className="table__body">

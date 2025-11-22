@@ -151,6 +151,7 @@ function CrearVenta() {
             onAddClient={handleAddClient}
             whatIs={"nuevoCliente"}
           />
+          <hr></hr>
           <ListarData
             title="Productos"
             fetchFunction={fetchProductos}

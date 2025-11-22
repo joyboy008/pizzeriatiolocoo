@@ -105,7 +105,9 @@ function ListarVentas() {
         {authProvider.checkRoutePermissions("admin") ? (
           <>
             <div className="mt-4">
-              <button onClick={exportToPDF}>Exportar PDF</button>
+              <button className="dropbtn succes" onClick={exportToPDF}>
+                Exportar PDF
+              </button>
             </div>
           </>
         ) : null}

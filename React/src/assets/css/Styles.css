@@ -53,6 +53,7 @@ body {
 
 .danger {
   background-color: rgb(255, 138, 138);
+  color: #171717;
 }
 
 .danger:hover,

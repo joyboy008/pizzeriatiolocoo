@@ -19,12 +19,16 @@
 main.table {
     width: 50vw;
     min-height: 700px;
-    background: rgb(255, 111, 60);
+    background: rgb(245, 155, 123);
     background: linear-gradient(180deg, rgba(255, 111, 60, 1) 0%, rgba(255, 176, 112, 1) 40%, rgb(255, 173, 119) 100%, rgba(235, 149, 92, 1) 100%, rgba(48, 35, 5, 1) 100%, rgba(17, 33, 77, 1) 100%, rgba(8, 131, 175, 1) 100%);
     backdrop-filter: blur(12px);
     box-shadow: 0 .4rem .8rem #0005;
     border-radius: .8rem;
     overflow: hidden;
+}
+
+.clientes {
+    background: rgb(235, 153, 123) !important;
 }
 
 /* Cabecera de la tabla */

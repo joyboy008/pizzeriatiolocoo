@@ -21,8 +21,9 @@
 .buscador-input {
   width: 100%;
   padding: 14px 50px 14px 20px;
-  font-size: 16px;
-  color: currentColor;
+  margin: 4px;
+  font-size: 18px;
+  color: rgb(46, 11, 11);
   background-color: #fdc88388;
   border: 1px solid rgb(170, 215, 247);
   border-radius: 8px;
