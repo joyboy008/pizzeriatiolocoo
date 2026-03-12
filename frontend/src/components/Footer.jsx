@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="center">
         <a
           className="fotter"
-          href="https://mtw.marlonralda.dev"
+          href="https://mtw.mralda.net"
           target="_blank"
           rel="noreferrer"
         >
