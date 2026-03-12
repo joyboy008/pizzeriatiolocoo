@@ -3,6 +3,7 @@ import ListarData from "../../components/tables/ListarData";
 import api from "../../utils/api";
 import DefaultLayout from "../../components/DefaultLayout";
 import FiltrosVentas from "../../components/filtrosventas/FiltrosVentas";
+import imgTioLoko from"../../assets/images/tioloko.png"
 
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
@@ -19,6 +20,14 @@ function ListarVentas() {
     { label: "Total", field: "total" },
     { label: "📅", field: "date" },
     { label: "🧑‍💼", field: "user_username" },
+  ];
+
+  const columnsPdf = [
+    { label: "Cliente", field: "client_name" },
+    { label: "Dirección", field: "client_address" },
+    { label: "Total", field: "total" },
+    { label: "Fecha y Hora", field: "date" },
+    { label: "Vendedor", field: "user_username" },
   ];
 
   const fetchSales = useCallback(async () => {
@@ -66,17 +75,28 @@ function ListarVentas() {
 
   const exportToPDF = () => {
     const doc = new jsPDF();
+      const imgWidth = 15; // ~150px aprox
+  const imgHeight = 15;
+  const pageWidth = doc.internal.pageSize.getWidth();
     doc.text(
-      `Reporte de Ventas Tio Locoo- Filtro: ${corregirNombreFiltro(filter)}`,
+      `Reporte de Ventas Tio Locoo Filtro: ${corregirNombreFiltro(filter)}`,
       14,
       16
     );
+    doc.addImage(
+  imgTioLoko,
+  "PNG", 
+  pageWidth - imgWidth - 14, // margen derecho
+  8,
+  imgWidth,
+  imgHeight
+);
 
-    const tableColumn = columns.map((col) => col.label);
+    const tableColumn = columnsPdf.map((col) => col.label);
     const tableRows = sales.map((sale) => [
       sale.client_name,
       sale.client_address,
-      sale.total,
+      "Q."+sale.total,
       sale.date,
       sale.user_username,
     ]);
@@ -84,7 +104,7 @@ function ListarVentas() {
     autoTable(doc, {
       head: [tableColumn],
       body: tableRows,
-      startY: 20,
+      startY: 24,
     });
 
     const totalVentas = sales
@@ -94,7 +114,7 @@ function ListarVentas() {
     // 🧾 Tabla de resumen de totales
     autoTable(doc, {
       head: [["", "TOTAL GENERAL"]],
-      body: [["", `$ ${totalVentas}`]],
+      body: [["", `Q ${totalVentas}`]],
       startY: doc.lastAutoTable.finalY + 10,
       styles: {
         fontStyle: "bold",
@@ -106,7 +126,7 @@ function ListarVentas() {
       },
     });
 
-    doc.save(`reporte_ventas_${filter}.pdf`);
+    doc.save(`reporte_de_ventas_tiolocoo_${filter}.pdf`);
   };
 
   return (
